@@ -1,0 +1,19 @@
+﻿<Window
+    x:Class="BindingToObservables.MainWindow"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:t="clr-namespace:BindingToObservables"
+    x:Name="root"
+    Title="MainWindow"
+    Height="350"
+    Width="525">
+    <StackPanel>
+        <t:ObserverControl
+            Collection="{Binding Collection, ElementName=root}"
+            SelectedItem="{Binding SelectedItem, ElementName=root}" />
+        <Button
+            Command="{Binding Add, ElementName=root}">Add</Button>
+        <TextBlock
+            Text="{Binding SelectedItem, ElementName=root}" />
+    </StackPanel>
+</Window>

@@ -1,0 +1,115 @@
+﻿@inherits Nancy.ViewEngines.Razor.NancyRazorViewBase<dynamic>
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>Pdf On Mobile Browsers</title>
+    <link rel="stylesheet" href="http://netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css" />
+    <script type="text/javascript" src="http://code.jquery.com/jquery-2.0.3.min.js"></script>
+    <script type="text/javascript" src="http://netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="/Content/pdfobject.js"></script>
+    <link href="http://netdna.bootstrapcdn.com/bootswatch/3.0.0/flatly/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+    @Html.Partial("_navbar")
+    <div class="container">
+        <div class="row">            
+            <a href="mailto:wsullivan@softdocs.com?subject=Pdf%20test%20feedback:%20All">Leave feedback for this page</a>
+        </div>
+        <div class="row">
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <h3 class="panel-title">iFrame</h3>
+                </div>
+                <div class="panel-body">
+                    <iframe width="100%" src="/approved/sloth.pdf" seamless='seamless'></iframe>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <h3 class="panel-title">Embed only</h3>
+                </div>
+                <div class="panel-body">
+                    <embed src="/approved/sloth.pdf" type="application/pdf" style="width: 100%;" width="100%" />
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <h3 class="panel-title">Object only</h3>
+                </div>
+                <div class="panel-body">
+                    <object data="/approved/sloth.pdf" type="application/pdf" style="width: 100%;" width="100%">
+                    </object>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <h3 class="panel-title">Object with alt</h3>
+                </div>
+                <div class="panel-body">
+                    <object data="/approved/sloth.pdf" type="application/pdf" style="width: 100%;" width="100%">
+                        Your browser cannot display PDFs.  Please click here to download: <a href="/approved">approved.pdf</a>
+                    </object>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <h3 class="panel-title">Object with embed</h3>
+                </div>
+                <div class="panel-body">
+                    <object data="/approved/sloth.pdf" type="application/pdf" style="width: 100%;" width="100%">
+                        <embed src="/approved/sloth.pdf" type="application/pdf" />
+                    </object>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <h3 class="panel-title">Using PDFObject</h3>
+                </div>
+                <div id="pdfobjectparent" class="panel-body">
+                    <object id="pdfobjecttarget" style="width: 100%;" width="100%"></object>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <h3>Your suggestion here!</h3>
+        </div>
+        <div class="row">
+            <div class="col-xs-1 visible-xs"></div>
+            <div class="col-xs-10 col-sm-10 col-sm-offset-1">
+                <a href="mailto:wsullivan@softdocs.com?subject=Another%20way%20to%20embed%20a%20pdf%20is...">If you know of a different way, pass it on!</a>
+            </div>
+        </div>
+        @*        <div class="row">
+            <h3></h3>
+        </div>
+        <div class="row">
+            <div class="col-xs-2 visible-xs"></div>
+            <div class="col-xs-8 col-sm-8 col-sm-offset-2">
+            </div>
+        </div>*@
+    </div>
+    <script type="text/javascript">
+        $(function ()
+        {
+            $('.panel-body').toggle();
+            $('.panel-heading').click(function () { $(this).next().toggle(); });
+            var result = new PDFObject({ url: "/approved" }).embed("pdfobjecttarget");
+            if (!result)
+            {
+                $('#pdfobjectparent').text('PDFObject not supported :(');
+            }
+        });
+    </script>
+</body>
+</html>

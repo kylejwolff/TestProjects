@@ -1,0 +1,41 @@
+﻿@inherits Nancy.ViewEngines.Razor.NancyRazorViewBase<dynamic>
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>Pdf On Mobile Browsers</title>
+    <link rel="stylesheet" href="http://netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css" />
+    <script type="text/javascript" src="http://code.jquery.com/jquery-2.0.3.min.js"></script>
+    <script type="text/javascript" src="http://netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="/Content/pdfobject.js"></script>
+    <link href="http://netdna.bootstrapcdn.com/bootswatch/3.0.0/flatly/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+    @Html.Partial("_navbar")
+    <div class="container">
+        <div class="row">            
+            <a href="mailto:wsullivan@softdocs.com?subject=Pdf%20test%20feedback:%20pdfobj">Leave feedback for this page</a>
+        </div>
+        <div class="row">
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <h3 class="panel-title">Using PDFObject</h3>
+                </div>
+                <div id="pdfobjectparent" class="panel-body" style="height:700px;">
+                    <object id="pdfobjecttarget" style="width: 100%; height:100%;"></object>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script type="text/javascript">
+        $(function ()
+        {
+            var result = new PDFObject({ url: "/approved/sloth.pdf" }).embed("pdfobjecttarget");
+            if (!result)
+            {
+                $('#pdfobjectparent').text('PDFObject not supported :(');
+            }
+        });
+    </script>
+</body>
+</html>
