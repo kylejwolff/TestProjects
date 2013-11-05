@@ -1,0 +1,30 @@
+﻿<Window
+  x:Class="GuidME.Window1"
+  xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+  xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+  ResizeMode="NoResize" BorderThickness="0"
+  Height="200"
+  Width="200"
+  Name="mainWin" >
+  <Window.BitmapEffect>
+    <BlurBitmapEffect KernelType="Gaussian" Radius="0"/>
+  </Window.BitmapEffect>
+  <Window.Resources>
+    <Storyboard x:Key="sb" Name="sb">
+      <DoubleAnimation Storyboard.TargetName="mainWin" Storyboard.TargetProperty="(Window.BitmapEffect).(BlurBitmapEffect.Radius)" From="0" To="7" Duration="0:0:0.25" AutoReverse="True" FillBehavior="Stop"  />
+      <!--<DoubleAnimation Storyboard.TargetName="mainWin" Storyboard.TargetProperty="Opacity" From="1" To="0" Duration="0:0:0.25" AutoReverse="True" FillBehavior="Stop"  />-->
+      <!--<DoubleAnimation Storyboard.TargetName="mainWin" Storyboard.TargetProperty="Opacity" From="0" To="1" Duration="0:0:05" FillBehavior="HoldEnd"  />-->
+    </Storyboard>
+  </Window.Resources>
+  <Grid>
+    <Grid.RowDefinitions>
+      <RowDefinition Height="6*"/>
+      <RowDefinition Height="1*"/>
+    </Grid.RowDefinitions>
+    <Button
+      Name="CreateGuid"
+      Click="CreateGuid_Click"
+      Content="GUID ME!" Height="138.857" VerticalAlignment="Top" />
+    <CheckBox Margin="4" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Grid.Row="1" Name="autoCheckbox" Unchecked="autoCheckbox_Unchecked" Checked="autoCheckbox_Checked">Check here to auto-generate</CheckBox>
+  </Grid>
+</Window>

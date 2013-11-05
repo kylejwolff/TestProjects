@@ -1,0 +1,52 @@
+﻿<Window x:Class="NotifyDataErrorInfo.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        x:Name="root"
+        Title="MainWindow" Height="350" Width="525">
+    <Window.Resources>
+        <Style
+            TargetType="{x:Type TextBox}">
+            <Setter
+                Property="VerticalAlignment"
+                Value="Center" />
+            <Setter
+                Property="Margin"
+                Value="0,2,40,2" />
+            <Setter
+                Property="Validation.ErrorTemplate">
+                <Setter.Value>
+                    <ControlTemplate>
+                        <DockPanel
+                            LastChildFill="true">
+                            <Border
+                                Background="Red"
+                                DockPanel.Dock="right"
+                                Margin="5,0,0,0"
+                                Width="20"
+                                Height="20"
+                                CornerRadius="10"
+                                ToolTip="{Binding ElementName=customAdorner, Path=AdornedElement.(Validation.Errors)[0].ErrorContent}">
+                                <TextBlock
+                                    Text="!"
+                                    VerticalAlignment="center"
+                                    HorizontalAlignment="center"
+                                    FontWeight="Bold"
+                                    Foreground="white" />
+                            </Border>
+                            <AdornedElementPlaceholder
+                                Name="customAdorner"
+                                VerticalAlignment="Center">
+                                <Border
+                                    BorderBrush="red"
+                                    BorderThickness="1" />
+                            </AdornedElementPlaceholder>
+                        </DockPanel>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+
+    </Window.Resources>
+    <TextBox Margin="20"
+        Text="{Binding Text, ElementName=root, UpdateSourceTrigger=PropertyChanged}" />
+</Window>
