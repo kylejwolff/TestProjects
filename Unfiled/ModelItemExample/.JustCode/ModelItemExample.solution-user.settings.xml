@@ -1,0 +1,36 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<JustCodeSettings Version="0.0.10" Timestamp="eb6aa720-85a3-4f7c-9071-0be0e9e9e330">
+  <IgnoredErrorsAndWarningsSettings xmlns:i="http://www.w3.org/2001/XMLSchema-instance">
+    <IgnoredErrorsAndWarnings>
+      <FilePath>
+        <Path>C:\TEST_PROJECTS\ModelItemExample\ModelItemExample\MainWindow.xaml.cs</Path>
+        <ProjectFullName>C:\TEST_PROJECTS\ModelItemExample\ModelItemExample\ModelItemExample.csproj</ProjectFullName>
+        <IgnoredElement>
+          <Column>55</Column>
+          <Text>Name does not match the naming convention. Suggested name '__editingContextKey'</Text>
+          <Line>79</Line>
+        </IgnoredElement>
+        <IgnoredElement>
+          <Column>25</Column>
+          <Text>Type name does not match file name</Text>
+          <Line>141</Line>
+        </IgnoredElement>
+        <IgnoredElement>
+          <Column>25</Column>
+          <Text>Show base types</Text>
+          <Line>151</Line>
+        </IgnoredElement>
+        <IgnoredElement>
+          <Column>25</Column>
+          <Text>Type name does not match file name</Text>
+          <Line>151</Line>
+        </IgnoredElement>
+        <IgnoredElement>
+          <Column>25</Column>
+          <Text>Type name does not match file name</Text>
+          <Line>153</Line>
+        </IgnoredElement>
+      </FilePath>
+    </IgnoredErrorsAndWarnings>
+  </IgnoredErrorsAndWarningsSettings>
+</JustCodeSettings>
